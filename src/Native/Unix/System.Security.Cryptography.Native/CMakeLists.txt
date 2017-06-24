@@ -61,6 +61,11 @@ add_library(System.Security.Cryptography.Native.OpenSsl
     $<TARGET_OBJECTS:objlib>
 )
 
+add_library(System.Security.Cryptography.Native.OpenSsl-Static
+    STATIC
+    $<TARGET_OBJECTS:objlib>
+)
+
 # Disable the "lib" prefix.
 set_target_properties(System.Security.Cryptography.Native.OpenSsl PROPERTIES PREFIX "")
 
@@ -103,3 +108,4 @@ endif()
 include(configure.cmake)
 
 install_library_and_symbols (System.Security.Cryptography.Native.OpenSsl)
+install (TARGETS System.Security.Cryptography.Native.OpenSsl-Static DESTINATION .)

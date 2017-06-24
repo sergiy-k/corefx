@@ -33,8 +33,15 @@ add_library(System.Net.Security.Native
     ${VERSION_FILE_PATH}
 )
 
+add_library(System.Net.Security.Native-Static
+    STATIC
+    ${NATIVEGSS_SOURCES}
+    ${VERSION_FILE_PATH}
+)
+
 target_link_libraries(System.Net.Security.Native
     ${LIBGSS}
 )
 
 install_library_and_symbols (System.Net.Security.Native)
+install (TARGETS System.Net.Security.Native-Static DESTINATION .)
