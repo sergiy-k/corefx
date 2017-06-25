@@ -31,8 +31,15 @@ add_library(System.Net.Http.Native
     ${VERSION_FILE_PATH}
 )
 
+add_library(System.Net.Http.Native-Static
+    STATIC
+    ${NATIVEHTTP_SOURCES}
+    ${VERSION_FILE_PATH}
+)
+
 target_link_libraries(System.Net.Http.Native
   ${CURL_LIBRARIES}
 )
 
 install_library_and_symbols (System.Net.Http.Native)
+install (TARGETS System.Net.Http.Native-Static DESTINATION .)
