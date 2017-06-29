@@ -12,8 +12,15 @@ add_library(System.IO.Compression.Native
     ${VERSION_FILE_PATH}
 )
 
+add_library(System.IO.Compression.Native-Static
+    STATIC
+    ${NATIVECOMPRESSION_SOURCES}
+    ${VERSION_FILE_PATH}
+)
+
 target_link_libraries(System.IO.Compression.Native
     ${ZLIB_LIBRARIES}
 )
 
 install_library_and_symbols (System.IO.Compression.Native)
+install (TARGETS System.IO.Compression.Native-Static DESTINATION .)
