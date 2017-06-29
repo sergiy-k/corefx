@@ -17,8 +17,15 @@ static void* libssl = nullptr;
 
 bool OpenLibrary()
 {
-    // First try the default versioned so naming as described in the OpenSSL doc
-    libssl = dlopen("libssl.so.1.0.0", RTLD_LAZY);
+    // Alpine
+    libssl = dlopen("libssl.so.39.0.0", RTLD_LAZY);
+
+    if (libssl == nullptr)
+    {
+        // First try the default versioned so naming as described in the OpenSSL doc
+        libssl = dlopen("libssl.so.1.0.0", RTLD_LAZY);
+    }
+
     if (libssl == nullptr)
     {
         // Fedora derived distros use different naming for the version 1.0.0
